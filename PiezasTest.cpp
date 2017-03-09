@@ -121,19 +121,19 @@ TEST(PiezasTest, pieceAtGeneral)
 TEST(PiezasTest, placePieceX)
 {
 	Piezas p;
-	ASSERT_TRUE(p.pieceAt(2,1,'x') == X);
+	ASSERT_TRUE(p.placePiece(2,1,'x') == X);
 }
 
 TEST(PiezasTest, placePieceO)
 {
 	Piezas p;
-	ASSERT_TRUE(p.pieceAt(2,1,'o') == O);
+	ASSERT_TRUE(p.placePiece(2,1,'o') == O);
 }
 
 TEST(PiezasTest, placePieceInvalid)
 {
 	Piezas p;
-	ASSERT_TRUE(p.pieceAt(5,1,'x') == X);
+	ASSERT_TRUE(p.placePiece(5,1,'x') == X);
 }
 
 TEST(PiezasTest, gameStateNotover)
