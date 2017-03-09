@@ -44,10 +44,16 @@ TEST(PiezasTest, constructorCheckTurn)
 	ASSERT_TRUE(p.toggleTurn() == O);
 }
 
-TEST(PiezasTest, toggleTurnCheck)
+TEST(PiezasTest, toggleTurnCheckX)
 {
 	Piezas p;
 	p.toggleTurn();	
+	ASSERT_TRUE(p.toggleTurn() == X);
+}
+
+TEST(PiezasTest, toggleTurnCheckO)
+{
+	Piezas p;	
 	ASSERT_TRUE(p.toggleTurn() == O);
 }
 
