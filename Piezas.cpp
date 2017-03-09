@@ -80,6 +80,7 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
+	Piece result = turn;
 	// invalid column
 	if(column > BOARD_COLS-1) //call this with invalid column
 	{
@@ -101,11 +102,12 @@ Piece Piezas::dropPiece(int column)
 		if(board[i][column] ==  Blank)
 		{
 			board[i][column] = turn;			
-			Piece result = turn;
+			result = turn;
 			toggleTurn();
-			return result;
+			//return result;
 		}
 	}
+	return result;
 }
 
 /**
@@ -207,8 +209,8 @@ Piece Piezas::gameState()
 		xcount =0;  ocount = 0;
 	}
 
-	cout << "maxXcount: " << maxXcount << endl;
-	cout << "maxOcount: " << maxOcount << endl;
+	//cout << "maxXcount: " << maxXcount << endl;
+	//cout << "maxOcount: " << maxOcount << endl;
 
 	xcount =0;  ocount = 0;
 	// check maxcount within columns
@@ -238,8 +240,8 @@ Piece Piezas::gameState()
 		xcount =0;  ocount = 0;
 	}
 
-	cout << "maxXcount: " << maxXcount << endl;
-	cout << "maxOcount: " << maxOcount << endl;
+	//cout << "maxXcount: " << maxXcount << endl;
+	//cout << "maxOcount: " << maxOcount << endl;
 	
 	if(maxXcount > maxOcount){ return X;} // call it after placing x as winner
 	if(maxXcount < maxOcount){ return O;} // call it after placing o as winner 
