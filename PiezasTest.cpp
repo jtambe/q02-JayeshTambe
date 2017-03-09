@@ -29,7 +29,7 @@ TEST(PiezasTest, constructorCheckPieces)
 	{		
 		for (int j=0; j<BOARD_COLS ; j++)
 			{
-				if(board[i][j] != Blank)
+				if(pieceAt(i,j) != Blank)
 				{
 					allBlank = false;
 				}
@@ -66,7 +66,7 @@ TEST(PiezasTest, resetCheck)
 	{		
 		for (int j=0; j<BOARD_COLS ; j++)
 			{
-				if(board[i][j] != Blank)
+				if(pieceAt(i,j) != Blank)
 				{
 					allBlank = false;
 				}
