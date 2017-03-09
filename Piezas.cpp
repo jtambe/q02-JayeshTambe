@@ -240,54 +240,54 @@ Piece Piezas::gameState()
 }
 
 
-int main()
-{
-	Piezas p;
-	//cout << p.pieceAt(0,5) << endl;;
+// int main()
+// {
+// 	Piezas p;
+// 	//cout << p.pieceAt(0,5) << endl;;
 
 
-	//p.reset();
-	for (int i =0; i<BOARD_ROWS ;i++)
-	{		
-		for (int j=0; j<BOARD_COLS ;j++)
-			{
-				cout << p.pieceAt(i,j) << '\t';
-			}
-			cout << endl;
-	}
+// 	//p.reset();
+// 	for (int i =0; i<BOARD_ROWS ;i++)
+// 	{		
+// 		for (int j=0; j<BOARD_COLS ;j++)
+// 			{
+// 				cout << p.pieceAt(i,j) << '\t';
+// 			}
+// 			cout << endl;
+// 	}
 
-	cout << p.toggleTurn() << endl;
+// 	cout << p.toggleTurn() << endl;
 
-	// cout << "new test" << endl;
-	// p.dropPiece(2);
-	// p.dropPiece(2);
-	// p.dropPiece(2);
-	// cout << p.pieceAt(2,2) << endl;
-	// cout << p.pieceAt(1,2) << endl;
-	// cout << p.pieceAt(0,2) << endl;
+// 	// cout << "new test" << endl;
+// 	// p.dropPiece(2);
+// 	// p.dropPiece(2);
+// 	// p.dropPiece(2);
+// 	// cout << p.pieceAt(2,2) << endl;
+// 	// cout << p.pieceAt(1,2) << endl;
+// 	// cout << p.pieceAt(0,2) << endl;
 
-	// p.placePiece(0,0, 'x');
-	// p.placePiece(0,1, 'x');
-	// p.placePiece(0,2, 'x');
-	// p.placePiece(0,3, 'x');
+// 	// p.placePiece(0,0, 'x');
+// 	// p.placePiece(0,1, 'x');
+// 	// p.placePiece(0,2, 'x');
+// 	// p.placePiece(0,3, 'x');
 	
-	// p.placePiece(1,0, 'o');
-	// p.placePiece(1,1, 'o');
-	// p.placePiece(1,2, 'o');
-	// p.placePiece(1,3, 'o');
+// 	// p.placePiece(1,0, 'o');
+// 	// p.placePiece(1,1, 'o');
+// 	// p.placePiece(1,2, 'o');
+// 	// p.placePiece(1,3, 'o');
 
 
-	// p.placePiece(2,0, 'x');
-	// p.placePiece(2,1, 'x');
-	// p.placePiece(2,2, 'x');
-	// p.placePiece(2,3, 'x');
+// 	// p.placePiece(2,0, 'x');
+// 	// p.placePiece(2,1, 'x');
+// 	// p.placePiece(2,2, 'x');
+// 	// p.placePiece(2,3, 'x');
 	
-	// cout << "winner: " << p.gameState() << endl;
+// 	// cout << "winner: " << p.gameState() << endl;
 
 
 
 
 
-	//cout << "success" << endl;
+// 	//cout << "success" << endl;
 
-}
+// }
