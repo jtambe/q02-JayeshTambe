@@ -1,0 +1,454 @@
+        -:    0:Source:Piezas.cpp
+        -:    0:Graph:Piezas.gcno
+        -:    0:Data:Piezas.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "Piezas.h"
+        -:    2:#include <vector>
+        -:    3:#include <iostream>
+        -:    4:using namespace std;
+        -:    5:/** CLASS Piezas
+        -:    6: * Class for representing a Piezas vertical board, which is roughly based
+        -:    7: * on the game "Connect Four" where pieces are placed in a column and 
+        -:    8: * fall to the bottom of the column, or on top of other pieces already in
+        -:    9: * that column. For an illustration of the board, see:
+        -:   10: *  https://en.wikipedia.org/wiki/Connect_Four
+        -:   11: *
+        -:   12: * Board coordinates [row,col] should match with:
+        -:   13: * [2,0][2,1][2,2][2,3]
+        -:   14: * [1,0][1,1][1,2][1,3]
+        -:   15: * [0,0][0,1][0,2][0,3]
+        -:   16: * So that a piece dropped in column 2 should take [0,2] and the next one
+        -:   17: * dropped in column 2 should take [1,2].
+        -:   18:**/
+        -:   19:
+        -:   20:
+        -:   21:/**
+        -:   22: * Constructor sets an empty board (default 6 rows, 7 columns) and 
+        -:   23: * specifies it is X's turn first
+        -:   24:**/
+function _ZN6PiezasC2Ev called 17 returned 100% blocks executed 57%
+       17:   25:Piezas::Piezas()
+call    0 returned 17
+call    1 never executed
+        -:   26:{		
+        -:   27:
+       17:   28:	board.resize( BOARD_ROWS, vector<Piece>( BOARD_COLS , Blank ) );	
+call    0 returned 17
+call    1 returned 17
+branch  2 taken 17 (fallthrough)
+branch  3 taken 0 (throw)
+call    4 returned 17
+branch  5 taken 17 (fallthrough)
+branch  6 taken 0 (throw)
+call    7 returned 17
+branch  8 taken 17 (fallthrough)
+branch  9 taken 0 (throw)
+call   10 returned 17
+call   11 never executed
+call   12 never executed
+       17:   29:	turn = X;
+       17:   30:}
+        -:   31:
+        -:   32:
+function _ZN6Piezas10toggleTurnEv called 34 returned 100% blocks executed 100%
+       34:   33:Piece Piezas::toggleTurn()
+        -:   34:{
+       34:   35:	if (turn == X) {turn = O;}	
+branch  0 taken 21 (fallthrough)
+branch  1 taken 13
+       13:   36:	else if (turn == O) {turn = X;}
+branch  0 taken 13 (fallthrough)
+branch  1 taken 0
+       34:   37:	return turn;
+        -:   38:}
+        -:   39:
+        -:   40:/**
+        -:   41: * Resets each board location to the Blank Piece value, with a board of the
+        -:   42: * same size as previously specified (or default if overloaded constructor
+        -:   43: * is never called).
+        -:   44:**/
+function _ZN6Piezas5resetEv called 1 returned 100% blocks executed 100%
+        1:   45:void Piezas::reset()
+        -:   46:{
+        4:   47:	for (int i=0; i<BOARD_ROWS ; i++)
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:   48:	{		
+       15:   49:		for (int j=0; j<BOARD_COLS ; j++)
+branch  0 taken 12
+branch  1 taken 3 (fallthrough)
+        -:   50:			{
+       12:   51:				board[i][j] = Blank;
+call    0 returned 12
+call    1 returned 12
+        -:   52:			}
+        -:   53:	}
+        -:   54:
+        1:   55:}
+        -:   56:
+        -:   57:/**
+        -:   58: * Places a piece of the current turn on the board, returns what
+        -:   59: * piece is placed, and toggles which Piece's turn it is. dropPiece does 
+        -:   60: * NOT allow to place a piece in a location where a column is full.
+        -:   61: * In that case, placePiece returns Piece Blank value 
+        -:   62: * Out of bounds coordinates return the Piece Invalid value
+        -:   63: * Trying to drop a piece where it cannot be placed loses the player's turn
+        -:   64:**/ 
+function _ZN6Piezas9dropPieceEi called 19 returned 100% blocks executed 100%
+       19:   65:Piece Piezas::dropPiece(int column)
+        -:   66:{
+       19:   67:	Piece result = turn;
+        -:   68:	// invalid column
+       19:   69:	if(column > BOARD_COLS-1) //call this with invalid column
+branch  0 taken 1 (fallthrough)
+branch  1 taken 18
+        -:   70:	{
+        1:   71:		toggleTurn();
+call    0 returned 1
+        1:   72:		return Invalid;
+        -:   73:	}
+        -:   74:	
+        -:   75:	// is column full case
+       18:   76:	if(board[0][column] != Blank) // call dropPiece more than thrice
+call    0 returned 18
+call    1 returned 18
+branch  2 taken 13 (fallthrough)
+branch  3 taken 5
+        -:   77:	{
+       13:   78:		toggleTurn();
+call    0 returned 13
+       13:   79:		return Blank;
+        -:   80:	}
+        -:   81:
+        -:   82:	//cout << "here in droppiece" << endl;
+        -:   83:	// general case
+       20:   84:	for(int i =BOARD_ROWS-1; i >=0 ;i--) 
+branch  0 taken 15
+branch  1 taken 5 (fallthrough)
+        -:   85:	{
+       15:   86:		if(board[i][column] ==  Blank)
+call    0 returned 15
+call    1 returned 15
+branch  2 taken 15 (fallthrough)
+branch  3 taken 0
+        -:   87:		{
+       15:   88:			board[i][column] = turn;			
+call    0 returned 15
+call    1 returned 15
+       15:   89:			result = turn;
+       15:   90:			toggleTurn();
+call    0 returned 15
+        -:   91:			//return result;
+        -:   92:		}
+        -:   93:	}
+        5:   94:	return result;
+        -:   95:}
+        -:   96:
+        -:   97:/**
+        -:   98: * Returns what piece is at the provided coordinates, or Blank if there
+        -:   99: * are no pieces there, or Invalid if the coordinates are out of bounds
+        -:  100:**/
+function _ZN6Piezas7pieceAtEii called 27 returned 100% blocks executed 100%
+       27:  101:Piece Piezas::pieceAt(int row, int column)
+        -:  102:{	
+       27:  103:	if(row < 0 || row > BOARD_ROWS-1 || column < 0 || column > BOARD_COLS-1) // call with invalid input
+branch  0 taken 27 (fallthrough)
+branch  1 taken 0
+branch  2 taken 26 (fallthrough)
+branch  3 taken 1
+branch  4 taken 26 (fallthrough)
+branch  5 taken 0
+branch  6 taken 0 (fallthrough)
+branch  7 taken 26
+        -:  104:	{
+        1:  105:		return Invalid;
+        -:  106:	}
+        -:  107:	else
+        -:  108:	{
+       26:  109:		return board[row][column];
+call    0 returned 26
+call    1 returned 26
+        -:  110:	}
+        -:  111:
+        -:  112:}
+        -:  113:
+        -:  114:// myfunction for making testing easy
+function _ZN6Piezas10placePieceEiic called 39 returned 100% blocks executed 100%
+       39:  115:Piece Piezas::placePiece(int row, int column, char c)
+        -:  116:{
+       39:  117:	if(row < 0 || row > BOARD_ROWS-1 || column < 0 || column > BOARD_COLS-1) // call with invalid input
+branch  0 taken 39 (fallthrough)
+branch  1 taken 0
+branch  2 taken 38 (fallthrough)
+branch  3 taken 1
+branch  4 taken 38 (fallthrough)
+branch  5 taken 0
+branch  6 taken 0 (fallthrough)
+branch  7 taken 38
+        -:  118:	{
+        1:  119:		return Invalid;
+        -:  120:	}
+        -:  121:	else // call with fixed input
+        -:  122:	{
+       38:  123:		if(c == 'x') {board[row][column] = X;}
+branch  0 taken 19 (fallthrough)
+branch  1 taken 19
+call    2 returned 19
+call    3 returned 19
+       38:  124:		if(c == 'o') {board[row][column] = O;}
+branch  0 taken 19 (fallthrough)
+branch  1 taken 19
+call    2 returned 19
+call    3 returned 19
+       38:  125:		return board[row][column];
+call    0 returned 38
+call    1 returned 38
+        -:  126:	}
+        -:  127:
+        -:  128:}
+        -:  129:
+        -:  130:
+        -:  131:
+        -:  132:
+        -:  133:
+        -:  134:/**
+        -:  135: * Returns which Piece has won, if there is a winner, Invalid if the game
+        -:  136: * is not over, or Blank if the board is filled and no one has won ("tie").
+        -:  137: * For a game to be over, all locations on the board must be filled with X's 
+        -:  138: * and O's (i.e. no remaining Blank spaces). The winner is which player has
+        -:  139: * the most adjacent pieces in a single line. Lines can go either vertically
+        -:  140: * or horizontally. If both X's and O's have the same max number of pieces in a
+        -:  141: * line, it is a tie.
+        -:  142:**/
+function _ZN6Piezas9gameStateEv called 4 returned 100% blocks executed 100%
+        4:  143:Piece Piezas::gameState()
+        -:  144:{
+        4:  145:	bool isGameOver = true;
+        -:  146:
+       16:  147:	for (int i=0; i<BOARD_ROWS ; i++)
+branch  0 taken 12
+branch  1 taken 4 (fallthrough)
+        -:  148:	{		
+       60:  149:		for (int j=0; j<BOARD_COLS ; j++)
+branch  0 taken 48
+branch  1 taken 12 (fallthrough)
+        -:  150:			{
+       48:  151:				if(board[i][j] == Blank)
+call    0 returned 48
+call    1 returned 48
+branch  2 taken 12 (fallthrough)
+branch  3 taken 36
+        -:  152:				{
+       12:  153:					isGameOver = false;   // call it while board has some blank pieces
+        -:  154:				}
+        -:  155:			}
+        -:  156:	}
+        -:  157:
+        4:  158:	if(isGameOver == false)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 3
+        -:  159:	{
+        1:  160:		return Invalid;
+        -:  161:	}
+        -:  162:
+        3:  163:	int maxXcount = 0;
+        3:  164:	int maxOcount = 0;
+        -:  165:
+        3:  166:	int xcount =0; int ocount = 0;
+        -:  167:
+        -:  168:	// check max count within rows
+       12:  169:	for (int i=0; i<BOARD_ROWS ; i++)
+branch  0 taken 9
+branch  1 taken 3 (fallthrough)
+        -:  170:	{		
+       45:  171:		for (int j=0; j<BOARD_COLS ; j++)
+branch  0 taken 36
+branch  1 taken 9 (fallthrough)
+        -:  172:		{
+       36:  173:			if(board[i][j] == X)
+call    0 returned 36
+call    1 returned 36
+branch  2 taken 18 (fallthrough)
+branch  3 taken 18
+        -:  174:			{
+       18:  175:				ocount =0;
+       18:  176:				xcount++;
+       18:  177:				if(maxXcount < xcount)
+branch  0 taken 7 (fallthrough)
+branch  1 taken 11
+        -:  178:				{
+        7:  179:					maxXcount = xcount;
+        -:  180:				}
+        -:  181:			}
+       18:  182:			else if(board[i][j] == O)
+call    0 returned 18
+call    1 returned 18
+branch  2 taken 18 (fallthrough)
+branch  3 taken 0
+        -:  183:			{
+       18:  184:				xcount =0;
+       18:  185:				ocount++;
+       18:  186:				if(maxOcount < ocount)
+branch  0 taken 6 (fallthrough)
+branch  1 taken 12
+        -:  187:				{
+        6:  188:					maxOcount = ocount;
+        -:  189:				}
+        -:  190:			}
+        -:  191:
+        -:  192:		}
+        9:  193:		xcount =0;  ocount = 0;
+        -:  194:	}
+        -:  195:
+        -:  196:	//cout << "maxXcount: " << maxXcount << endl;
+        -:  197:	//cout << "maxOcount: " << maxOcount << endl;
+        -:  198:
+        3:  199:	xcount =0;  ocount = 0;
+        -:  200:	// check maxcount within columns
+       15:  201:	for (int i=0; i<BOARD_COLS ; i++) // 0 - 3
+branch  0 taken 12
+branch  1 taken 3 (fallthrough)
+        -:  202:	{
+       48:  203:		for (int j=0; j<BOARD_ROWS ; j++) // 0 - 2
+branch  0 taken 36
+branch  1 taken 12 (fallthrough)
+        -:  204:		{
+       36:  205:			if(board[j][i] == X)
+call    0 returned 36
+call    1 returned 36
+branch  2 taken 18 (fallthrough)
+branch  3 taken 18
+        -:  206:			{
+       18:  207:				ocount =0;
+       18:  208:				xcount++;
+       18:  209:				if(maxXcount < xcount)
+branch  0 taken 2 (fallthrough)
+branch  1 taken 16
+        -:  210:				{
+        2:  211:					maxXcount = xcount;
+        -:  212:				}
+        -:  213:			}
+       18:  214:			else if(board[j][i] == O)
+call    0 returned 18
+call    1 returned 18
+branch  2 taken 18 (fallthrough)
+branch  3 taken 0
+        -:  215:			{
+       18:  216:				xcount =0;
+       18:  217:				ocount++;
+       18:  218:				if(maxOcount < ocount)
+branch  0 taken 3 (fallthrough)
+branch  1 taken 15
+        -:  219:				{
+        3:  220:					maxOcount = ocount;
+        -:  221:				}
+        -:  222:			}
+        -:  223:		}
+       12:  224:		xcount =0;  ocount = 0;
+        -:  225:	}
+        -:  226:
+        -:  227:	//cout << "maxXcount: " << maxXcount << endl;
+        -:  228:	//cout << "maxOcount: " << maxOcount << endl;
+        -:  229:	
+        3:  230:	if(maxXcount > maxOcount){ return X;} // call it after placing x as winner
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        2:  231:	if(maxXcount < maxOcount){ return O;} // call it after placing o as winner 
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  232:	else {return Blank;} // manage equal entries
+        -:  233:
+function _GLOBAL__sub_I__ZN6PiezasC2Ev called 1 returned 100% blocks executed 100%
+function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
+        3:  234:}
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        -:  235:
+        -:  236:
+        -:  237:// int main()
+        -:  238:// {
+        -:  239:// 	// Piezas p;
+        -:  240:// 	// //cout << p.pieceAt(0,5) << endl;;
+        -:  241:
+        -:  242:
+        -:  243:// 	// //p.reset();
+        -:  244:// 	// for (int i =0; i<BOARD_ROWS ;i++)
+        -:  245:// 	// {		
+        -:  246:// 	// 	for (int j=0; j<BOARD_COLS ;j++)
+        -:  247:// 	// 		{
+        -:  248:// 	// 			cout << p.pieceAt(i,j) << '\t';
+        -:  249:// 	// 		}
+        -:  250:// 	// 		cout << endl;
+        -:  251:// 	// }
+        -:  252:
+        -:  253:// 	// cout << p.toggleTurn() << endl;
+        -:  254:
+        -:  255:
+        -:  256:// 	Piezas p;
+        -:  257:
+        -:  258:
+        -:  259:// 	p.placePiece(0,0, 'o');
+        -:  260:// 	p.placePiece(1,0, 'o');
+        -:  261:// 	p.placePiece(2,0, 'o');
+        -:  262:
+        -:  263:// 	p.placePiece(0,1, 'o');
+        -:  264:// 	p.placePiece(1,1, 'o');
+        -:  265:// 	p.placePiece(2,1, 'o');
+        -:  266:	
+        -:  267:
+        -:  268:// 	p.placePiece(0,2, 'o');
+        -:  269:// 	p.placePiece(1,2, 'o');
+        -:  270:// 	p.placePiece(2,2, 'o');
+        -:  271:
+        -:  272:
+        -:  273:// 	p.placePiece(0,3, 'o');
+        -:  274:// 	p.placePiece(1,3, 'x');
+        -:  275:// 	p.placePiece(2,3, 'x');
+        -:  276:
+        -:  277:
+        -:  278:// 	for (int i =0; i<BOARD_ROWS ;i++)
+        -:  279:// 	{		
+        -:  280:// 		for (int j=0; j<BOARD_COLS ;j++)
+        -:  281:// 			{
+        -:  282:// 				cout << p.pieceAt(i,j) << '\t';
+        -:  283:// 			}
+        -:  284:// 			cout << endl;
+        -:  285:// 	}
+        -:  286:
+        -:  287:// 	cout << p.gameState() << endl;
+        -:  288:
+        -:  289:
+        -:  290:
+        -:  291:// 	// cout << "new test" << endl;
+        -:  292:// 	// p.dropPiece(2);
+        -:  293:// 	// p.dropPiece(2);
+        -:  294:// 	// p.dropPiece(2);
+        -:  295:// 	// cout << p.pieceAt(2,2) << endl;
+        -:  296:// 	// cout << p.pieceAt(1,2) << endl;
+        -:  297:// 	// cout << p.pieceAt(0,2) << endl;
+        -:  298:
+        -:  299:// 	// p.placePiece(0,0, 'x');
+        -:  300:// 	// p.placePiece(0,1, 'x');
+        -:  301:// 	// p.placePiece(0,2, 'x');
+        -:  302:// 	// p.placePiece(0,3, 'x');
+        -:  303:	
+        -:  304:// 	// p.placePiece(1,0, 'o');
+        -:  305:// 	// p.placePiece(1,1, 'o');
+        -:  306:// 	// p.placePiece(1,2, 'o');
+        -:  307:// 	// p.placePiece(1,3, 'o');
+        -:  308:
+        -:  309:
+        -:  310:// 	// p.placePiece(2,0, 'x');
+        -:  311:// 	// p.placePiece(2,1, 'x');
+        -:  312:// 	// p.placePiece(2,2, 'x');
+        -:  313:// 	// p.placePiece(2,3, 'x');
+        -:  314:	
+        -:  315:// 	// cout << "winner: " << p.gameState() << endl;
+        -:  316:
+        -:  317:// 	//cout << "success" << endl;
+        -:  318:
+        -:  319:// }
