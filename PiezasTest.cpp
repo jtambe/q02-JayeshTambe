@@ -29,7 +29,7 @@ TEST(PiezasTest, constructorCheckPieces)
 	{		
 		for (int j=0; j<BOARD_COLS ; j++)
 			{
-				if(pieceAt(i,j) != Blank)
+				if(p.pieceAt(i,j) != Blank)
 				{
 					allBlank = false;
 				}
@@ -66,7 +66,7 @@ TEST(PiezasTest, resetCheck)
 	{		
 		for (int j=0; j<BOARD_COLS ; j++)
 			{
-				if(pieceAt(i,j) != Blank)
+				if(p.pieceAt(i,j) != Blank)
 				{
 					allBlank = false;
 				}
@@ -78,7 +78,7 @@ TEST(PiezasTest, resetCheck)
 TEST(PiezasTest, dropPieceInvalidColumn)
 {
 	Piezas p;		
-	ASSERT_TRUE(p.dropPiece(5) == Invalid)
+	ASSERT_TRUE(p.dropPiece(5) == Invalid);
 }
 
 TEST(PiezasTest, dropPieceMoreThanThrice)
