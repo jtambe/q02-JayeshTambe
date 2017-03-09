@@ -47,6 +47,8 @@ class Piezas
     **/
   	void reset();
 
+    Piece toggleTurn(); // my function for functionality
+
   	/**
   	 * Places a piece of the current turn on the board, returns what
   	 * piece is placed, and toggles which Piece's turn it is. dropPiece does 
@@ -62,6 +64,8 @@ class Piezas
   	 * are no pieces there, or Invalid if the coordinates are out of bounds
   	**/
   	Piece pieceAt(int row, int column);
+
+    Piece placePiece(int row, int column, char c); // myfunction for making my testing easy
 
     /**
      * Returns which Piece has won, if there is a winner, Invalid if the game
