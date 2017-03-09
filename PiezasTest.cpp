@@ -139,7 +139,7 @@ TEST(PiezasTest, placePieceO)
 TEST(PiezasTest, placePieceInvalid)
 {
 	Piezas p;
-	ASSERT_TRUE(p.placePiece(5,1,'x') == X);
+	ASSERT_TRUE(p.placePiece(5,1,'x') == Invalid);
 }
 
 TEST(PiezasTest, gameStateNotover)
@@ -153,10 +153,14 @@ TEST(PiezasTest, xWinner)
 {
 	Piezas p;
 
+
+	p.placePiece(0,0, 'x');
+	p.placePiece(1,0, 'x');
+	p.placePiece(2,0, 'x');
+
 	p.placePiece(0,1, 'x');
 	p.placePiece(1,1, 'x');
-	p.placePiece(2,1, 'x');
-	
+	p.placePiece(2,1, 'x');	
 
 	p.placePiece(0,2, 'x');
 	p.placePiece(1,2, 'x');
@@ -164,14 +168,10 @@ TEST(PiezasTest, xWinner)
 
 
 	p.placePiece(0,3, 'x');
-	p.placePiece(1,3, 'x');
-	p.placePiece(2,3, 'x');
+	p.placePiece(1,3, 'o');
+	p.placePiece(2,3, 'o');
 
 
-	p.placePiece(0,4, 'o');
-	p.placePiece(1,4, 'o');
-	p.placePiece(2,4, 'o');
-	
 
 	ASSERT_TRUE(p.gameState() == X);
 }
@@ -180,9 +180,13 @@ TEST(PiezasTest, oWinner)
 {
 	Piezas p;
 
-	p.placePiece(0,1, 'x');
-	p.placePiece(1,1, 'x');
-	p.placePiece(2,1, 'x');
+	p.placePiece(0,0, 'o');
+	p.placePiece(1,0, 'o');
+	p.placePiece(2,0, 'o');
+
+	p.placePiece(0,1, 'o');
+	p.placePiece(1,1, 'o');
+	p.placePiece(2,1, 'o');
 	
 
 	p.placePiece(0,2, 'o');
@@ -191,14 +195,8 @@ TEST(PiezasTest, oWinner)
 
 
 	p.placePiece(0,3, 'o');
-	p.placePiece(1,3, 'o');
-	p.placePiece(2,3, 'o');
-
-
-	p.placePiece(0,4, 'o');
-	p.placePiece(1,4, 'o');
-	p.placePiece(2,4, 'o');
-	
+	p.placePiece(1,3, 'x');
+	p.placePiece(2,3, 'x');
 
 	ASSERT_TRUE(p.gameState() == O);
 }
@@ -207,6 +205,11 @@ TEST(PiezasTest, gameTie)
 {
 	Piezas p;
 
+
+	p.placePiece(0,0, 'o');
+	p.placePiece(1,0, 'o');
+	p.placePiece(2,0, 'o');
+	
 	p.placePiece(0,1, 'x');
 	p.placePiece(1,1, 'x');
 	p.placePiece(2,1, 'x');
@@ -222,10 +225,6 @@ TEST(PiezasTest, gameTie)
 	p.placePiece(2,3, 'o');
 
 
-	p.placePiece(0,4, 'o');
-	p.placePiece(1,4, 'o');
-	p.placePiece(2,4, 'o');
-	
 
 	ASSERT_TRUE(p.gameState() == Blank);
 }
