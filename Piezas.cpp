@@ -23,25 +23,9 @@ using namespace std;
  * specifies it is X's turn first
 **/
 Piezas::Piezas()
-{	
-	// cout << "here" << endl;
-	// for (size_t i =0; i<BOARD_ROWS-1 ; i++)
-	// {
-	// 	board[i]
-	// }
+{		
 
-	// for (size_t i =0; i<BOARD_ROWS-1 ; i++)
-	// {		
-	// 	for (size_t j=0; j < BOARD_COLS-1; j++)
-	// 	// encountered a new problem after appending ; after for(...);
-	// 	// name lookup of ‘j’ changed for ISO ‘for’ scoping
-	// 		{
-	// 			board[i][j] = Blank;
-	// 		}
-	// }
-
-	board.resize( BOARD_ROWS, vector<Piece>( BOARD_COLS , Blank ) );
-	//toggleTurn();
+	board.resize( BOARD_ROWS, vector<Piece>( BOARD_COLS , Blank ) );	
 	turn = X;
 }
 
