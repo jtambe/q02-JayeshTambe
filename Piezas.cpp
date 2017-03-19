@@ -88,6 +88,7 @@ Piece Piezas::dropPiece(int column)
 			board[i][column] = turn;			
 			result = turn;
 			toggleTurn();
+			break;
 			//return result;
 		}
 	}

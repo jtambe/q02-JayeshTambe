@@ -902,10 +902,10 @@ function _ZNKSt6vectorI5PieceSaIS0_EE8capacityEv called 0 returned 0% blocks exe
         -:  776:       *  see at().)
         -:  777:       */
         -:  778:      reference
-function _ZNSt6vectorI5PieceSaIS0_EEixEj called 318 returned 100% blocks executed 100%
-function _ZNSt6vectorIS_I5PieceSaIS0_EESaIS2_EEixEj called 318 returned 100% blocks executed 100%
-      636:  779:      operator[](size_type __n) _GLIBCXX_NOEXCEPT
-      636:  780:      { return *(this->_M_impl._M_start + __n); }
+function _ZNSt6vectorI5PieceSaIS0_EEixEj called 333 returned 100% blocks executed 100%
+function _ZNSt6vectorIS_I5PieceSaIS0_EESaIS2_EEixEj called 333 returned 100% blocks executed 100%
+      666:  779:      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+      666:  780:      { return *(this->_M_impl._M_start + __n); }
         -:  781:
         -:  782:      /**
         -:  783:       *  @brief  Subscript access to the data contained in the %vector.
